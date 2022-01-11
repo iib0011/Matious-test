@@ -1,6 +1,8 @@
 # FakeStore Api products list
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+It displays all products fetched from the [Fakestore Api](https://fakestoreapi.com/products
+) in a table, limiting 5 items per page. It allows you to filter the products by category and sort them by price and by rating.
 
 ## Available Scripts
 
