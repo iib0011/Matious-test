@@ -1,5 +1,9 @@
 import './App.css';
+
+import "bootstrap/dist/css/bootstrap.css";
+import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
 import BootstrapTable from 'react-bootstrap-table-next';
+import paginationFactory from 'react-bootstrap-table2-paginator';
 import {useEffect, useState} from "react";
 function App() {
 
@@ -38,7 +42,8 @@ function App() {
         text: 'Title'
     }, {
         dataField: 'price',
-        text: 'Price'
+        text: 'Price',
+            sort:true,
     }, {
         dataField: 'category',
         text: 'Category'
@@ -55,7 +60,10 @@ function App() {
   return (
     <div className="App">
       <h1>Products list</h1>
-        <BootstrapTable keyField='id' data={products} columns={ columns } />
+        <BootstrapTable bootstrap4 keyField='id' data={products} columns={ columns }  pagination={paginationFactory()}
+                        striped
+                        hover
+                        condensed/>
     </div>
   );
 }
