@@ -1,23 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
-
+import BootstrapTable from 'react-bootstrap-table-next';
 function App() {
+    const data=[{
+        "id":1,
+        "name":"jj",
+        "price":4
+    }]
+    const columns = [{
+        dataField: 'id',
+        text: 'Product ID'
+    }, {
+        dataField: 'name',
+        text: 'Product Name'
+    }, {
+        dataField: 'price',
+        text: 'Product Price'
+    }];
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Products list</h1>
+        <BootstrapTable keyField='id' data={data} columns={ columns } />
     </div>
   );
 }
