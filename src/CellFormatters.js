@@ -1,11 +1,12 @@
-const imageFormatter = (cell, row) => {
+export function imageFormatter (cell, row) {
     return (
         <img src={cell}
-             title={row.title}
-             width={50}></img>
+    alt={row.title}
+    title={row.title}
+    width={50}/>
     );
 }
-const ratingFormatter = (cell, row) => {
+export function ratingFormatter (cell, row) {
     let color = 'green';
     if (cell >= 3 && cell < 4) {
         color = 'orange'
@@ -15,8 +16,4 @@ const ratingFormatter = (cell, row) => {
     return (<span><strong style={{color: color}}> {cell}</strong></span>
 
     );
-}
-module.exports={
-    imageFormatter,
-    ratingFormatter
 }
