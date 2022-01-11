@@ -26,14 +26,12 @@ function App() {
                 const categories={...[...categorySet]};
                 setCategoryOptions(categories);
                 const categoryToIndex = swap(categories)
-                json.map(val=>{
-                    val.category=categoryToIndex[val.category]
-                })
+                json.map(product=>
+                    product.category=categoryToIndex[product.category]
+                )
                 setProducts(json)
             })
     }, []);
-
-
 
     const columns = [
         {
