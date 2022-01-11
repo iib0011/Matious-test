@@ -14,7 +14,13 @@ function App() {
 
     const [products, setProducts] = useState([]);
     const [categoryOptions, setCategoryOptions] = useState({});
-
+    const headerSortingStyle = {backgroundColor: '#6cc3ef'};
+    const sortCaret = (order, column) => {
+        if (!order) return (<span>&nbsp;&nbsp;Desc/Asc</span>);
+        else if (order === 'asc') return (<span>&nbsp;&nbsp;Desc/<font color="green">Asc</font></span>);
+        else if (order === 'desc') return (<span>&nbsp;&nbsp;<font color="red">Desc</font>/Asc</span>);
+        return null;
+    }
     useEffect(() => {
         fetch("https://fakestoreapi.com/products")
             .then((res) => res.json())
@@ -23,11 +29,12 @@ function App() {
                 const categorySet = json.reduce((previousValue, currentValue) => {
                     return previousValue.add(currentValue.category)
                 }, new Set());
-                const categories={...[...categorySet]};
+                // categories in format {0:"category0",1:"category1"}
+                const categories = {...[...categorySet]};
                 setCategoryOptions(categories);
                 const categoryToIndex = swap(categories)
-                json.map(product=>
-                    product.category=categoryToIndex[product.category]
+                json.map(product =>
+                    product.category = categoryToIndex[product.category]
                 )
                 setProducts(json)
             })
@@ -36,7 +43,7 @@ function App() {
     const columns = [
         {
             dataField: 'image',
-            text:'Image',
+            text: 'Image',
             formatter: imageFormatter
         },
         {
@@ -46,10 +53,13 @@ function App() {
             dataField: 'price',
             text: 'Price',
             sort: true,
+            headerSortingStyle,
+            sortCaret
+
         }, {
             dataField: 'category',
             text: 'Category',
-            formatter:cell=>categoryOptions[cell],
+            formatter: cell => categoryOptions[cell],
             filter: selectFilter({
                 options: categoryOptions
             })
@@ -62,7 +72,9 @@ function App() {
             dataField: 'rating.rate',
             text: 'Rating',
             sort: true,
-            formatter: ratingFormatter
+            headerSortingStyle,
+            formatter: ratingFormatter,
+            sortCaret
         }];
     const options = {
         // pageStartIndex: 0,
@@ -71,12 +83,22 @@ function App() {
     };
     return (
         <div className="App">
-            <h1>Products list</h1>
+            <div style={{margin:10}}>
+            <h3 style={{
+                borderRadius: '0.25em',
+                textAlign: 'center',
+                color: 'blue',
+                border: '1px solid blue',
+                padding: '0.5em'
+            }}>Products List</h3>
             <BootstrapTable keyField='id' data={products} columns={columns} pagination={paginationFactory(options)}
                             filter={filterFactory()}
                             striped
                             hover
-                            condensed/>
+                            condensed
+                            noDataIndication="Table is Empty"
+                            />
+        </div>
         </div>
     );
 }

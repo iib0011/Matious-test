@@ -1,12 +1,13 @@
-export function imageFormatter (cell, row) {
+export function imageFormatter(cell, row) {
     return (
         <img src={cell}
-    alt={row.title}
-    title={row.title}
-    width={50}/>
+             alt={row.title}
+             title={row.title}
+             width={"100%"}/>
     );
 }
-export function ratingFormatter (cell, row) {
+
+export function ratingFormatter(cell, row) {
     let color = 'green';
     if (cell >= 3 && cell < 4) {
         color = 'orange'
