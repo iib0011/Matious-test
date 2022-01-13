@@ -87,9 +87,8 @@ function App() {
             <h3 style={{
                 borderRadius: '0.25em',
                 textAlign: 'center',
-                color: 'blue',
-                border: '1px solid blue',
-                padding: '0.5em'
+                border: '1px solid',
+                padding: '0.5em',
             }}>Products List</h3>
             <BootstrapTable keyField='id' data={products} columns={columns} pagination={paginationFactory(options)}
                             filter={filterFactory()}
