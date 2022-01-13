@@ -95,7 +95,7 @@ function App() {
                             striped
                             hover
                             condensed
-                            noDataIndication="Table is Empty"
+                            noDataIndication="Loading ..."
                             />
         </div>
         </div>
