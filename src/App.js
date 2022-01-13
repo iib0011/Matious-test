@@ -17,8 +17,8 @@ function App() {
     const headerSortingStyle = {backgroundColor: '#6cc3ef'};
     const sortCaret = (order, column) => {
         if (!order) return (<span>&nbsp;&nbsp;Desc/Asc</span>);
-        else if (order === 'asc') return (<span>&nbsp;&nbsp;Desc/<font color="green">Asc</font></span>);
-        else if (order === 'desc') return (<span>&nbsp;&nbsp;<font color="red">Desc</font>/Asc</span>);
+        else if (order === 'asc') return (<span>&nbsp;&nbsp;Desc/<font color="white">Asc</font></span>);
+        else if (order === 'desc') return (<span>&nbsp;&nbsp;<font color="white">Desc</font>/Asc</span>);
         return null;
     }
     useEffect(() => {
